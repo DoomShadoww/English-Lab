@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Lab | Pronombres, Auxiliares, Tiempos y Hacks</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f5ff',
+                            100: '#e0ebff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                        },
+                        accent: {
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #4c1d95 100%);
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 glass border-b border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 sm:h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl gradient-bg flex items-center justify-center text-white shadow-lg shadow-brand-500/20">
+                        <i class="fa-solid fa-graduation-cap text-xl sm:text-2xl"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl sm:text-2xl font-black tracking-tight gradient-text">EnglishLab</span><br>
+                        <span class="hidden sm:inline-block text-xs uppercase tracking-widest text-slate-400 font-semibold block -mt-1">A estudiar peque ❤️</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+                    <a href="#pronouns" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-brand-50 transition-colors">
+                        <i class="fa-solid fa-user-tag text-brand-500 mr-1.5"></i>Pronombres
+                    </a>
+                    <a href="#auxiliaries" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-brand-50 transition-colors">
+                        <i class="fa-solid fa-bolt text-amber-500 mr-1.5"></i>Auxiliares
+                    </a>
+                    <a href="#tenses" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-brand-50 transition-colors">
+                        <i class="fa-solid fa-clock text-accent-500 mr-1.5"></i>Tiempos Verbales
+                    </a>
+                    <a href="#hacks" class="px-3 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-brand-600 hover:bg-brand-50 transition-colors">
+                        <i class="fa-solid fa-lightbulb text-yellow-500 mr-1.5"></i>Tips & Hacks
+                    </a>
+                    <a href="#practice" class="ml-2 px-4 py-2 rounded-xl text-sm font-bold bg-brand-600 text-white shadow-md shadow-brand-500/20 hover:bg-brand-700 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-gamepad"></i>Ejercicios
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2.5 rounded-xl text-slate-600 hover:bg-slate-100 focus:outline-none" aria-label="Abrir menú">
+                    <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-4 space-y-2 shadow-xl">
+            <a href="#pronouns" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600">
+                <i class="fa-solid fa-user-tag text-brand-500 w-6"></i>Pronombres
+            </a>
+            <a href="#auxiliaries" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600">
+                <i class="fa-solid fa-bolt text-amber-500 w-6"></i>Auxiliares
+            </a>
+            <a href="#tenses" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600">
+                <i class="fa-solid fa-clock text-accent-500 w-6"></i>Tiempos Verbales
+            </a>
+            <a href="#hacks" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-brand-50 hover:text-brand-600">
+                <i class="fa-solid fa-lightbulb text-yellow-500 w-6"></i>Tips & Hacks
+            </a>
+            <a href="#practice" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl font-bold bg-brand-600 text-white text-center shadow-md">
+                <i class="fa-solid fa-gamepad mr-2"></i>Ir a los Ejercicios
+            </a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 bg-gradient-to-b from-brand-50/50 via-white to-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-3xl mx-auto">
+                    <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-brand-100 text-brand-700 mb-6 border border-brand-200">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Espero que te sirva mucho
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight mb-6">
+                        Vamos a aprender Inglés fácil con <span class="gradient-text">Ejercicios por Módulos</span>
+                    </h1>
+                    <p class="text-lg sm:text-xl text-slate-600 mb-8 leading-relaxed font-normal">
+                        Tendrás explicaciones visuales con ejemplos prácticos y <b>cuestionarios de práctica</b> para cada módulo.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="#pronouns" class="px-7 py-3.5 rounded-2xl bg-brand-600 text-white font-bold text-base shadow-xl shadow-brand-500/25 hover:bg-brand-700 hover:shadow-2xl hover:-translate-y-0.5 transition-all">
+                            Explorar Módulos <i class="fa-solid fa-arrow-down ml-2 text-sm"></i>
+                        </a>
+                        <a href="#practice" class="px-7 py-3.5 rounded-2xl bg-white text-slate-700 font-bold text-base border border-slate-200 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-circle-play text-brand-500"></i> Ir al prácticar Ejercicios
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Code Color Guide Legend -->
+                <div class="mt-14 max-w-4xl mx-auto bg-white rounded-2xl p-4 sm:p-6 border border-slate-200/80 shadow-xl shadow-slate-200/50">
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider text-center mb-4">Código de Color de Estructura Gramatical</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-2 gap-3 text-center text-xs font-bold">
+                      
+                        <div class="p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-700">
+                            <span class="block w-2.5 h-2.5 rounded-full bg-amber-500 mx-auto mb-1"></span> Auxiliar
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700">
+                            <span class="block w-2.5 h-2.5 rounded-full bg-emerald-500 mx-auto mb-1"></span> Verbo Principal
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: PRONOUNS -->
+        <section id="pronouns" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-200/60">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-brand-600 font-bold uppercase tracking-wider text-xs px-3 py-1 bg-brand-50 rounded-full border border-brand-100">Módulo 1</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Pronombres (Pronouns)</h2>
+                    <p class="text-slate-600 mt-2 max-w-2xl">Aprende cada pronombre según su posición en la oración: quién realiza la acción, quién la recibe y a quién le pertenece.</p>
+                </div>
+                <!-- Direct Module Practice CTA Button -->
+                <div>
+                    <button onclick="startModuleQuiz('pronouns')" class="px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm shadow-md flex items-center gap-2 transition-all">
+                        <i class="fa-solid fa-pen-to-square"></i> Practicar Pronombres Ahora
+                    </button>
+                </div>
+            </div>
+
+            <!-- Pronouns Interactive Grid with Multiple Examples -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Subject Pronouns -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-md card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-xl mb-4">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800">1. Sujeto (Subject)</h3>
+                        <p class="text-xs text-slate-500 mt-1 mb-4">Ejecutan la acción principal. Se colocan <b>antes</b> del verbo.</p>
+                        
+                        <div class="space-y-1.5 text-xs font-medium">
+                            <div class="flex justify-between p-2 bg-slate-50 rounded-lg"><span class="font-bold text-blue-600">I</span> <span>Yo</span></div>
+                            <div class="flex justify-between p-2 bg-slate-50 rounded-lg"><span class="font-bold text-blue-600">You</span> <span>Tú / Ustedes</span></div>
+                            <div class="flex justify-between p-2 bg-slate-50 rounded-lg"><span class="font-bold text-blue-600">He / She / It</span> <span>Él / Ella / Eso</span></div>
+                            <div class="flex justify-between p-2 bg-slate-50 rounded-lg"><span class="font-bold text-blue-600">We / They</span> <span>Nosotros / Ellos</span></div>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 space-y-2">
+                        <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Ejemplos Prácticos:</p>
+                        <div class="text-xs bg-blue-50/70 p-2.5 rounded-xl border border-blue-100">
+                            <span class="font-bold text-blue-600">She</span> <span class="text-emerald-600 font-medium">speaks</span> French fluently.
+                            <span class="block text-[11px] text-slate-500 font-normal">Ella habla francés con fluidez.</span>
+                        </div>
+                        <div class="text-xs bg-blue-50/70 p-2.5 rounded-xl border border-blue-100">
+                            <span class="font-bold text-blue-600">They</span> <span class="text-emerald-600 font-medium">live</span> in Toronto.
+                            <span class="block text-[11px] text-slate-500 font-normal">Ellos viven en Toronto.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Object Pronouns -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-md card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center font-bold text-xl mb-4">
+                            <i class="fa-solid fa-bullseye"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800">2. Objeto (Object)</h3>
+                        <p class="text-xs text-slate-500 mt-1 mb-4">Reciben el efecto de la acción. Van <b>después</b> del verbo o preposición.</p>
+                        
+                        <div class="space-y-1.5 text-xs font-medium">
+                            <div class="flex justify-between p-2 bg-slate-50 rounded-lg"><span class="font-bold text-pink-600">Me / You</span> <span>A mí / A ti</span></div>
+                            <div class="flex justify-between p-2 bg-slate-50 rounded-lg"><span class="font-bold text-pink-600">Him / Her</span> <span>A él / A ella</span></div>
+                            <div class="flex justify-between p-2 bg-slate-50 rounded-lg"><span class="font-bold text-pink-600">It / Us</span> <span>A eso / A nosotros</span></div>
+                            <div class="flex justify-between p-2 bg-slate-50 rounded-lg"><span class="font-bold text-pink-600">Them</span> <span>A ellos</span></div>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 space-y-2">
+                        <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Ejemplos Prácticos:</p>
+                        <div class="text-xs bg-pink-50/70 p-2.5 rounded-xl border border-pink-100">
+                            Paul invited <span class="font-bold text-pink-600">us</span> to the event.
+                            <span class="block text-[11px] text-slate-500 font-normal">Paul nos invitó a nosotros al evento.</span>
+                        </div>
+                        <div class="text-xs bg-pink-50/70 p-2.5 rounded-xl border border-pink-100">
+                            I will call <span class="font-bold text-pink-600">her</span> tonight.
+                            <span class="block text-[11px] text-slate-500 font-normal">La llamaré (a ella) esta noche.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Possessive Adjectives & Pronouns -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-md card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-xl mb-4">
+                            <i class="fa-solid fa-key"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800">3. Posesivos</h3>
+                        <p class="text-xs text-slate-500 mt-1 mb-4">Indican pertenencia (Adjetivo + Sustantivo / Pronombre Solo).</p>
+                        
+                        <div class="space-y-1.5 text-xs font-medium">
+                            <div class="flex justify-between p-2 bg-slate-50 rounded-lg"><span class="font-bold text-purple-600">My / Mine</span> <span>Mi / Mío</span></div>
+                            <div class="flex justify-between p-2 bg-slate-50 rounded-lg"><span class="font-bold text-purple-600">Your / Yours</span> <span>Tu / Tuyo</span></div>
+                            <div class="flex justify-between p-2 bg-slate-50 rounded-lg"><span class="font-bold text-purple-600">His / Her / Hers</span> <span>Su / Suyo</span></div>
+                            <div class="flex justify-between p-2 bg-slate-50 rounded-lg"><span class="font-bold text-purple-600">Our / Ours</span> <span>Nuestro / El nuestro</span></div>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 space-y-2">
+                        <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Ejemplos Prácticos:</p>
+                        <div class="text-xs bg-purple-50/70 p-2.5 rounded-xl border border-purple-100">
+                            That is <span class="font-bold text-purple-600">my</span> laptop. That laptop is <span class="font-bold text-purple-600">mine</span>.
+                            <span class="block text-[11px] text-slate-500 font-normal">Esa es mi laptop. Esa laptop es mía.</span>
+                        </div>
+                        <div class="text-xs bg-purple-50/70 p-2.5 rounded-xl border border-purple-100">
+                            Is this car <span class="font-bold text-purple-600">yours</span>?
+                            <span class="block text-[11px] text-slate-500 font-normal">¿Este carro es tuyo?</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reflexive Pronouns -->
+                <div class="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-md card-hover flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-xl bg-teal-100 text-teal-600 flex items-center justify-center font-bold text-xl mb-4">
+                            <i class="fa-solid fa-arrows-to-dot"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800">4. Reflexivos</h3>
+                        <p class="text-xs text-slate-500 mt-1 mb-4">La acción regresa al mismo sujeto que la ejecuta (-self / -selves).</p>
+                        
+                        <div class="space-y-1.5 text-xs font-medium">
+                            <div class="flex justify-between p-2 bg-slate-50 rounded-lg"><span class="font-bold text-teal-600">Myself / Yourself</span> <span>Yo mismo / Tú mismo</span></div>
+                            <div class="flex justify-between p-2 bg-slate-50 rounded-lg"><span class="font-bold text-teal-600">Himself / Herself</span> <span>Él mismo / Ella misma</span></div>
+                            <div class="flex justify-between p-2 bg-slate-50 rounded-lg"><span class="font-bold text-teal-600">Ourselves</span> <span>Nosotros mismos</span></div>
+                            <div class="flex justify-between p-2 bg-slate-50 rounded-lg"><span class="font-bold text-teal-600">Themselves</span> <span>Ellos mismos</span></div>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-100 space-y-2">
+                        <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Ejemplos Prácticos:</p>
+                        <div class="text-xs bg-teal-50/70 p-2.5 rounded-xl border border-teal-100">
+                            He repaired the car by <span class="font-bold text-teal-600">himself</span>.
+                            <span class="block text-[11px] text-slate-500 font-normal">Él reparó el auto por sí mismo (solo).</span>
+                        </div>
+                        <div class="text-xs bg-teal-50/70 p-2.5 rounded-xl border border-teal-100">
+                            We prepared <span class="font-bold text-teal-600">ourselves</span> for the exam.
+                            <span class="block text-[11px] text-slate-500 font-normal">Nos preparamos a nosotros mismos.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Visual Comparative Table for Pronouns -->
+            <div class="mt-10 bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl">
+                <h4 class="text-lg font-bold mb-4 flex items-center gap-2 text-amber-400">
+                    <i class="fa-solid fa-code-compare"></i> Comparativa Visual Rápida de Pronombres
+                </h4>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-xs sm:text-sm">
+                        <thead class="bg-slate-800 text-slate-300 font-bold uppercase tracking-wider">
+                            <tr>
+                                <th class="p-3 rounded-l-xl">Sujeto (Subject)</th>
+                                <th class="p-3">Objeto (Object)</th>
+                                <th class="p-3">Adj. Posesivo</th>
+                                <th class="p-3">Pronombre Posesivo</th>
+                                <th class="p-3 rounded-r-xl">Reflexivo</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800 font-mono">
+                            <tr><td class="p-3 text-blue-400 font-bold">I</td><td class="p-3 text-pink-400">Me</td><td class="p-3 text-purple-400">My</td><td class="p-3 text-amber-400">Mine</td><td class="p-3 text-teal-400">Myself</td></tr>
+                            <tr><td class="p-3 text-blue-400 font-bold">You</td><td class="p-3 text-pink-400">You</td><td class="p-3 text-purple-400">Your</td><td class="p-3 text-amber-400">Yours</td><td class="p-3 text-teal-400">Yourself</td></tr>
+                            <tr><td class="p-3 text-blue-400 font-bold">He</td><td class="p-3 text-pink-400">Him</td><td class="p-3 text-purple-400">His</td><td class="p-3 text-amber-400">His</td><td class="p-3 text-teal-400">Himself</td></tr>
+                            <tr><td class="p-3 text-blue-400 font-bold">She</td><td class="p-3 text-pink-400">Her</td><td class="p-3 text-purple-400">Her</td><td class="p-3 text-amber-400">Hers</td><td class="p-3 text-teal-400">Herself</td></tr>
+                            <tr><td class="p-3 text-blue-400 font-bold">We</td><td class="p-3 text-pink-400">Us</td><td class="p-3 text-purple-400">Our</td><td class="p-3 text-amber-400">Ours</td><td class="p-3 text-teal-400">Ourselves</td></tr>
+                            <tr><td class="p-3 text-blue-400 font-bold">They</td><td class="p-3 text-pink-400">Them</td><td class="p-3 text-purple-400">Their</td><td class="p-3 text-amber-400">Theirs</td><td class="p-3 text-teal-400">Themselves</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: AUXILIARY VERBS -->
+        <section id="auxiliaries" class="py-16 sm:py-24 bg-slate-100/70 border-t border-slate-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <span class="text-amber-600 font-bold uppercase tracking-wider text-xs px-3 py-1 bg-amber-50 rounded-full border border-amber-200">Módulo 2</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Verbos Auxiliares (Auxiliaries)</h2>
+                        <p class="text-slate-600 mt-2 max-w-2xl">Los conectores de tiempo e intención. Selecciona cada auxiliar para ver su desglose completo con ejemplos afirmativos, negativos, interrogativos y respuestas cortas.</p>
+                    </div>
+                    <!-- Direct Module Practice CTA Button -->
+                    <div>
+                        <button onclick="startModuleQuiz('auxiliaries')" class="px-5 py-3 rounded-xl bg-amber-600 hover:bg-amber-700 text-white font-bold text-sm shadow-md flex items-center gap-2 transition-all">
+                            <i class="fa-solid fa-pen-to-square"></i> Practicar Auxiliares Ahora
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Interactive Auxiliary Switcher -->
+                <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xl">
+                    <!-- Auxiliary Pills Tab Navigation -->
+                    <div class="flex flex-wrap gap-2 justify-center mb-8" id="auxTabs">
+                        <button onclick="selectAux('do')" id="tab-do" class="aux-btn active px-4 py-2.5 rounded-xl font-bold text-sm bg-brand-600 text-white shadow-md transition-all">
+                            DO / DOES (Presente)
+                        </button>
+                        <button onclick="selectAux('did')" id="tab-did" class="aux-btn px-4 py-2.5 rounded-xl font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
+                            DID (Pasado)
+                        </button>
+                        <button onclick="selectAux('have')" id="tab-have" class="aux-btn px-4 py-2.5 rounded-xl font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
+                            HAVE / HAS / HAD (Perfectos)
+                        </button>
+                        <button onclick="selectAux('will')" id="tab-will" class="aux-btn px-4 py-2.5 rounded-xl font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
+                            WILL / WOULD (Futuro/Cond)
+                        </button>
+                        <button onclick="selectAux('modals')" id="tab-modals" class="aux-btn px-4 py-2.5 rounded-xl font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">
+                            CAN / SHOULD / MUST / MIGHT
+                        </button>
+                    </div>
+
+                    <!-- Aux Content Panels -->
+                    <div id="auxContent" class="transition-all duration-300">
+                        <!-- Content dynamically loaded via JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: VERB TENSES -->
+        <section id="tenses" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-200/60">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                <div>
+                    <span class="text-accent-600 font-bold uppercase tracking-wider text-xs px-3 py-1 bg-purple-50 rounded-full border border-purple-200">Módulo 3</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Tiempos Verbales (Tenses)</h2>
+                    <p class="text-slate-600 mt-2 max-w-2xl">Ubica la acción en el mapa del tiempo y domina su construcción gramatical precisa.</p>
+                </div>
+                <div>
+                    <button onclick="startModuleQuiz('tenses')" class="px-5 py-3 rounded-xl bg-accent-600 hover:bg-accent-700 text-white font-bold text-sm shadow-md flex items-center gap-2 transition-all">
+                        <i class="fa-solid fa-pen-to-square"></i> Practicar Tiempos Ahora
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tenses Matrix Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Time Selector Column -->
+                <div class="lg:col-span-4 space-y-3">
+                    <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">1. Selecciona la época:</p>
+                    <button onclick="setTenseGroup('present')" id="tg-present" class="tense-group-btn w-full p-4 rounded-2xl border-2 border-brand-500 bg-brand-50/50 text-left flex items-center justify-between transition-all">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-brand-500 text-white flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-sun"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Presente</h4>
+                                <p class="text-xs text-slate-500">Hábitos, verdades, acciones en curso</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-brand-500"></i>
+                    </button>
+
+                    <button onclick="setTenseGroup('past')" id="tg-past" class="tense-group-btn w-full p-4 rounded-2xl border-2 border-slate-200 bg-white text-left flex items-center justify-between transition-all hover:border-slate-300">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-slate-600 text-white flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-history"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Pasado</h4>
+                                <p class="text-xs text-slate-500">Acciones terminadas o previas</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-slate-400"></i>
+                    </button>
+
+                    <button onclick="setTenseGroup('future')" id="tg-future" class="tense-group-btn w-full p-4 rounded-2xl border-2 border-slate-200 bg-white text-left flex items-center justify-between transition-all hover:border-slate-300">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center font-bold">
+                                <i class="fa-solid fa-rocket"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-800">Futuro</h4>
+                                <p class="text-xs text-slate-500">Planes, predicciones y promesas</p>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-slate-400"></i>
+                    </button>
+                </div>
+
+                <!-- Tense Detail Display Column -->
+                <div class="lg:col-span-8 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-xl" id="tenseDisplay">
+                    <!-- Dynamic Tense Details Loaded Here -->
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: TIPS & GRAMMAR HACKS -->
+        <section id="hacks" class="py-16 sm:py-24 bg-gradient-to-b from-slate-900 via-slate-900 to-slate-950 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+                    <div>
+                        <span class="text-amber-400 font-bold uppercase tracking-wider text-xs px-3.5 py-1.5 bg-amber-400/10 rounded-full border border-amber-400/20">
+                            <i class="fa-solid fa-brain mr-1"></i> Módulo 4
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-black text-white mt-4">Tips & Hacks Gramaticales Pro</h2>
+                        <p class="text-slate-400 mt-2 text-base">Trucos rápidos, Phrasal Verbs y atajos explicados de forma ultra-intuitiva.</p>
+                    </div>
+                    <div>
+                        <button onclick="startModuleQuiz('hacks')" class="px-5 py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-sm shadow-md flex items-center gap-2 transition-all">
+                            <i class="fa-solid fa-pen-to-square"></i> Practicar Hacks Avanzados
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hacks Category Selector -->
+                <div class="flex flex-wrap justify-center gap-2 mb-10" id="hackCategories">
+                    <button onclick="filterHacks('all')" id="hack-tab-all" class="hack-cat-btn active px-4 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20 transition-all">
+                        Todos los Hacks
+                    </button>
+                    <button onclick="filterHacks('phrasals')" id="hack-tab-phrasals" class="hack-cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 transition-all">
+                        <i class="fa-solid fa-puzzle-piece text-amber-400 mr-1.5"></i>Phrasal Verbs
+                    </button>
+                    <button onclick="filterHacks('advanced')" id="hack-tab-advanced" class="hack-cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 transition-all">
+                        <i class="fa-solid fa-bolt text-purple-400 mr-1.5"></i>Estructuras Avanzadas
+                    </button>
+                    <button onclick="filterHacks('basics')" id="hack-tab-basics" class="hack-cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 transition-all">
+                        <i class="fa-solid fa-seedling text-emerald-400 mr-1.5"></i>Reglas Básicas
+                    </button>
+                </div>
+
+                <!-- Hacks Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="hacksGrid">
+
+                    <!-- HACK 1: Phrasal Verbs Separables -->
+                    <div class="hack-card phrasals bg-slate-800/90 rounded-2xl p-6 border border-slate-700/80 shadow-xl flex flex-col justify-between hover:border-amber-500/50 transition-all duration-300">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold">
+                                    <i class="fa-solid fa-arrows-split-up-and-left"></i>
+                                </div>
+                                <span class="text-[10px] font-extrabold tracking-wider uppercase px-2.5 py-1 bg-amber-500/10 text-amber-400 rounded-md border border-amber-500/20">Phrasal Verbs</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Regla del Pronombre en Phrasal Verbs Separables</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                                Si el objeto es un <b>pronombre</b> (it, them, him, her), ¡DEBES colocarlo <b>en medio</b> del verbo y la partícula!
+                            </p>
+                            <div class="space-y-2 bg-slate-900/90 p-3 rounded-xl text-xs font-mono">
+                                <div class="text-emerald-400">✓ Turn <span class="text-pink-400 font-bold">it</span> off.</div>
+                                <div class="text-rose-400">✗ Turn off <span class="text-pink-400">it</span>. (Incorrecto)</div>
+                                <div class="text-slate-400 border-t border-slate-800 pt-1.5 mt-1">
+                                    <span class="text-slate-300">Con sustantivo puedes ambos:</span><br>
+                                    ✓ Turn off the light / Turn the light off.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HACK 2: Reported Speech Backshifting -->
+                    <div class="hack-card advanced bg-slate-800/90 rounded-2xl p-6 border border-slate-700/80 shadow-xl flex flex-col justify-between hover:border-purple-500/50 transition-all duration-300">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-xl font-bold">
+                                    <i class="fa-solid fa-backward"></i>
+                                </div>
+                                <span class="text-[10px] font-extrabold tracking-wider uppercase px-2.5 py-1 bg-purple-500/10 text-purple-400 rounded-md border border-purple-500/20">Avanzado</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Reported Speech: "El Paso Atrás"</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                                Al contar lo que alguien más dijo, retrocede 1 tiempo verbal al pasado (<i>Retorno</i>).
+                            </p>
+                            <div class="space-y-1.5 bg-slate-900/90 p-3 rounded-xl text-xs font-mono">
+                                <div class="flex justify-between text-slate-400"><span class="text-blue-400">Presente Simple</span> ➔ <span class="text-purple-400">Pasado Simple</span></div>
+                                <div class="flex justify-between text-slate-400"><span class="text-blue-400">Presente Continuo</span> ➔ <span class="text-purple-400">Pasado Continuo</span></div>
+                                <div class="flex justify-between text-slate-400"><span class="text-blue-400">Presente Perfecto</span> ➔ <span class="text-purple-400">Pasado Perfecto</span></div>
+                                <div class="flex justify-between text-slate-400"><span class="text-amber-400">Will</span> ➔ <span class="text-purple-400">Would</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HACK 3: Voz Pasiva - The Zombie Rule -->
+                    <div class="hack-card advanced bg-slate-800/90 rounded-2xl p-6 border border-slate-700/80 shadow-xl flex flex-col justify-between hover:border-emerald-500/50 transition-all duration-300">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl font-bold">
+                                    <i class="fa-solid fa-biohazard"></i>
+                                </div>
+                                <span class="text-[10px] font-extrabold tracking-wider uppercase px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-md border border-emerald-500/20">Voz Pasiva</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">El Test de "Por Zombis" (By Zombies)</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                                ¿No sabes si una oración está en Voz Pasiva? Agrega <b>"...by zombies"</b> al final. Si la frase mantiene sentido gramatical completo, ¡es Pasiva!
+                            </p>
+                            <div class="space-y-2 bg-slate-900/90 p-3 rounded-xl text-xs font-mono">
+                                <div class="text-emerald-400">✓ The city was destroyed... <b class="text-amber-400">by zombies!</b></div>
+                                <div class="text-slate-400">✓ The email has been sent... <b class="text-amber-400">by zombies!</b></div>
+                            </div>
+                        </div>
+                    </div>
+
+<!-- HACK 4: Gerund vs Infinitive Intentional Hack (Actualizado) -->
+                    <div class="hack-card advanced bg-slate-800/90 rounded-2xl p-6 border border-slate-700/80 shadow-xl flex flex-col justify-between hover:border-cyan-500/50 transition-all duration-300">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-xl font-bold">
+                                    <i class="fa-solid fa-compass-drafting"></i>
+                                </div>
+                                <span class="text-[10px] font-extrabold tracking-wider uppercase px-2.5 py-1 bg-cyan-500/10 text-cyan-400 rounded-md border border-cyan-500/20">Verbos de Doble Sentido</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Gerundio (-ING) vs Infinitivo (TO)</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed mb-3">
+                                💡 <b>Ojo:</b> Con verbos específicos como <i>stop, remember o try</i>, el significado cambia radicalmente: <b>-ING</b> = la acción en sí o hábito; <b>TO</b> = el propósito u objetivo.
+                            </p>
+                            
+                            <div class="space-y-2 bg-slate-900/90 p-3 rounded-xl text-xs font-mono mb-3">
+                                <div>
+                                    <span class="text-cyan-400">I stopped smoking.</span>
+                                    <span class="block text-[11px] text-slate-400 font-sans">Dejé el hábito por completo (Acción terminada).</span>
+                                </div>
+                                <div class="border-t border-slate-800 pt-1.5">
+                                    <span class="text-amber-400">I stopped to smoke.</span>
+                                    <span class="block text-[11px] text-slate-400 font-sans">Me detuve [con el propósito] de fumar (Hice una pausa).</span>
+                                </div>
+                            </div>
+
+                            <p class="text-[11px] text-slate-400 italic border-t border-slate-700/60 pt-2">
+                                *Nota general:* Fuera de estos verbos especiales, recuerda que por regla general las preposiciones y sujetos principales siempre usan <b>-ING</b>, y los deseos u obligaciones futuras usan <b>TO</b>.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- HACK 5: Deduction Modals in Past -->
+                    <div class="hack-card advanced bg-slate-800/90 rounded-2xl p-6 border border-slate-700/80 shadow-xl flex flex-col justify-between hover:border-rose-500/50 transition-all duration-300">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-xl font-bold">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </div>
+                                <span class="text-[10px] font-extrabold tracking-wider uppercase px-2.5 py-1 bg-rose-500/10 text-rose-400 rounded-md border border-rose-500/20">Deducción Pasada</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">Especulaciones Pasadas (Must Have / Couldn't Have)</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                                Combina <b>[Modal] + HAVE + [Participio]</b> para deducir eventos del pasado según tu certeza.
+                            </p>
+                            <div class="space-y-1.5 bg-slate-900/90 p-3 rounded-xl text-xs font-mono">
+                                <div><b class="text-emerald-400">Must have:</b> 99% seguro de que ocurrió.</div>
+                                <div><b class="text-amber-400">Might/Could have:</b> Tal vez ocurrió.</div>
+                                <div><b class="text-rose-400">Couldn't have:</b> Imposible que ocurriera.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- HACK 6: Third Person S (Basics) -->
+                    <div class="hack-card basics bg-slate-800/90 rounded-2xl p-6 border border-slate-700/80 shadow-xl flex flex-col justify-between hover:border-amber-500/50 transition-all duration-300">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl font-bold">
+                                    ⚡
+                                </div>
+                                <span class="text-[10px] font-extrabold tracking-wider uppercase px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-md border border-emerald-500/20">Básico</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-white mb-2">La "S" en Tercera Persona</h3>
+                            <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                                En Presente Simple AFIRMATIVO, si el sujeto es <b>He, She o It</b>, DEBES agregar una <b>-S</b> o <b>-ES</b> al verbo.
+                            </p>
+                            <div class="bg-slate-900/90 p-3 rounded-xl text-xs font-mono text-emerald-400">
+                                ✓ He work<b class="text-amber-400 text-sm">s</b> every day.<br>
+                                <span class="text-rose-400">✗ He work every day. (Error común)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: INTERACTIVE PRACTICE QUIZ (MULTI-MODULE) -->
+        <section id="practice" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-emerald-600 font-bold uppercase tracking-wider text-xs px-3 py-1 bg-emerald-50 rounded-full border border-emerald-200">Práctica por Módulo</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Aquí verás si has entendido mejor</h2>
+                <p class="text-slate-600 mt-2">Selecciona un módulo. Recibirás calificación al instante con explicaciones detalladas :)</p>
+            </div>
+
+            <!-- Quiz Category Selector Pills -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <button onclick="changeQuizCategory('pronouns')" id="qcat-pronouns" class="qcat-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-brand-600 text-white shadow-md transition-all">
+                    <i class="fa-solid fa-user-tag mr-1.5"></i>Ejercicios: Pronombres
+                </button>
+                <button onclick="changeQuizCategory('auxiliaries')" id="qcat-auxiliaries" class="qcat-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">
+                    <i class="fa-solid fa-bolt text-amber-500 mr-1.5"></i>Ejercicios: Auxiliares
+                </button>
+                <button onclick="changeQuizCategory('tenses')" id="qcat-tenses" class="qcat-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">
+                    <i class="fa-solid fa-clock text-accent-500 mr-1.5"></i>Ejercicios: Tiempos Verbales
+                </button>
+                <button onclick="changeQuizCategory('hacks')" id="qcat-hacks" class="qcat-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">
+                    <i class="fa-solid fa-brain text-yellow-500 mr-1.5"></i>Ejercicios: Hacks Avanzados
+                </button>
+            </div>
+
+            <!-- Quiz Container Card -->
+            <div class="max-w-3xl mx-auto bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-2xl relative">
+                <!-- Quiz Progress Bar -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center text-xs font-bold text-slate-500 mb-2">
+                        <span id="quizQuestionNum">Pregunta 1 de 4</span>
+                        <span id="quizScoreText" class="text-brand-600 font-extrabold">Puntuación: 0 pts</span>
+                    </div>
+                    <div class="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                        <div id="quizProgressBar" class="bg-gradient-to-r from-brand-500 to-accent-500 h-3 rounded-full transition-all duration-500" style="width: 25%"></div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Question Content Area -->
+                <div id="quizBody">
+                    <!-- Rendered dynamically -->
+                </div>
+
+                <!-- Quiz Navigation / Controls -->
+                <div class="mt-8 pt-6 border-t border-slate-100 flex justify-between items-center">
+                    <button onclick="restartCurrentQuiz()" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-500 hover:bg-slate-100 transition-colors">
+                        <i class="fa-solid fa-rotate-right mr-1"></i> Reiniciar Módulo
+                    </button>
+                    <button id="nextBtn" onclick="nextQuestion()" disabled class="px-6 py-3 rounded-xl font-bold text-sm bg-slate-200 text-slate-400 cursor-not-allowed transition-all">
+                        Siguiente Pregunta <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- MODULE 6: RECURSOS EXTERNOS Y LINKS -->
+    <section id="recursos" class="py-16 bg-slate-100 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-100 px-3 py-1 rounded-full"><i class="fa-solid fa-star mr-1"></i> Recomendados</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Plataformas y Enlaces de Apoyo</h2>
+                <p class="text-slate-600 text-sm mt-1">Sitios externos de alta calidad para praticar.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Test English (Destacado) -->
+                <a href="https://test-english.com/" target="_blank" class="bg-white p-6 rounded-2xl border-2 border-indigo-500 shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 relative">
+                    <span class="absolute top-4 right-4 bg-indigo-600 text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full">TOP 1</span>
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center font-bold text-xl mb-4">
+                        <i class="fa-solid fa-vial"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-1">Test English</h3>
+                    <p class="text-xs text-slate-500 mb-4">Explicaciones claras organizadas por niveles (A1 a C1) con tests e imagenes (si tienes problemas para navegar puedes buscar directamente: (NOMBRE DEL TEMA) TEST ENGLISH)</p>
+                    <span class="text-xs font-bold text-indigo-600 flex items-center gap-1">Visitar Test English <i class="fa-solid fa-external-link text-[10px]"></i></span>
+                </a>
+
+                <!-- British Council -->
+                <a href="https://learnenglish.britishcouncil.org/" target="_blank" class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center font-bold text-xl mb-4">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-1">British Council</h3>
+                    <p class="text-xs text-slate-500 mb-4">Lecciones oficiales con videos, audios y explicaciones gramaticales de nivel internacional.(Puedes buscar igual como en english test si tienes problemas al navegar)</p>
+                    <span class="text-xs font-bold text-blue-600 flex items-center gap-1">Ir a LearnEnglish <i class="fa-solid fa-external-link text-[10px]"></i></span>
+                </a>
+
+                <!-- Perfect English Grammar -->
+                <a href="https://www.perfect-english-grammar.com/" target="_blank" class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition transform hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center font-bold text-xl mb-4">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-900 mb-1">Perfect English Grammar</h3>
+                    <p class="text-xs text-slate-500 mb-4">Ideal para profundizar en tablas de tiempos verbales, auxiliares y ejercicios descargables.</p>
+                    <span class="text-xs font-bold text-emerald-600 flex items-center gap-1">Explorar Tablas <i class="fa-solid fa-external-link text-[10px]"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex justify-center items-center gap-3 mb-4">
+                <div class="w-8 h-8 rounded-xl gradient-bg flex items-center justify-center text-white text-sm">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <span class="text-lg font-extrabold text-white">EnglishLab</span>
+            </div>
+            <p class="text-sm max-w-md mx-auto text-slate-400 mb-6">
+               Te amo mucho mi vida ✨
+            </p>
+            <div class="text-xs text-slate-500">
+                &copy; 2026 EnglishLab. Todos los derechos reservados. Si tiene más dudas, comuníquese con su novio
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // --- MOBILE MENU TOGGLE ---
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+        // --- AUXILIARY SECTION LOGIC ---
+        const auxData = {
+            'do': {
+                title: "DO / DOES (Presente Simple)",
+                desc: "Se utilizan únicamente para oraciones <b>Negativas</b> e <b>Interrogativas</b> en el tiempo Presente Simple (en afirmativo solo se usan para dar énfasis extremo).",
+                uses: [
+                    { label: "DO", targets: "I, You, We, They" },
+                    { label: "DOES", targets: "He, She, It (3ª persona del singular)" }
+                ],
+                formulas: [
+                    { type: "Afirmativa", text: "[Sujeto] + [Verbo (con -s/es en He/She/It)] + [Complemento]" },
+                    { type: "Negativa", text: "[Sujeto] + <span class='text-amber-500 font-bold'>do not / does not (don't/doesn't)</span> + [Verbo Base] + [Complemento]" },
+                    { type: "Pregunta", text: "<span class='text-amber-500 font-bold'>Do / Does</span> + [Sujeto] + [Verbo Base] + [Complemento]?" }
+                ],
+                examples: [
+                    { label: "Afirmativa", en: "She <b class='text-emerald-600'>works</b> in an international company.", es: "Ella trabaja en una empresa internacional." },
+                    { label: "Negativa", en: "She <b class='text-amber-500'>doesn't work</b> on weekends.", es: "Ella no trabaja los fines de semana." },
+                    { label: "Pregunta", en: "<b class='text-amber-500'>Does</b> she <b class='text-emerald-600'>work</b> from home?", es: "¿Ella trabaja desde casa?" },
+                    { label: "Respuesta corta", en: "Yes, she <b class='text-amber-500'>does</b>. / No, she <b class='text-amber-500'>doesn't</b>.", es: "Sí, lo hace. / No, no lo hace." }
+                ]
+            },
+            'did': {
+                title: "DID (Pasado Simple)",
+                desc: "Auxiliar único para el tiempo Pasado Simple. Sirve para <b>todos</b> los pronombres personales de forma idéntica.",
+                uses: [
+                    { label: "DID", targets: "I, You, He, She, It, We, They (Todos los pronombres)" }
+                ],
+                formulas: [
+                    { type: "Afirmativa", text: "[Sujeto] + [Verbo en Pasado (-ed / Irregular)] + [Complemento]" },
+                    { type: "Negativa", text: "[Sujeto] + <span class='text-amber-500 font-bold'>did not (didn't)</span> + [Verbo Base] + [Complemento]" },
+                    { type: "Pregunta", text: "<span class='text-amber-500 font-bold'>Did</span> + [Sujeto] + [Verbo Base] + [Complemento]?" }
+                ],
+                examples: [
+                    { label: "Afirmativa", en: "They <b class='text-emerald-600'>bought</b> a new car last month.", es: "Ellos compraron un carro nuevo el mes pasado." },
+                    { label: "Negativa", en: "They <b class='text-amber-500'>didn't buy</b> the house.", es: "Ellos no compraron la casa." },
+                    { label: "Pregunta", en: "<b class='text-amber-500'>Did</b> they <b class='text-emerald-600'>buy</b> tickets for the concert?", es: "¿Compraron ellos entradas para el concierto?" },
+                    { label: "Respuesta corta", en: "Yes, they <b class='text-amber-500'>did</b>. / No, they <b class='text-amber-500'>didn't</b>.", es: "Sí, lo hicieron. / No, no lo hicieron." }
+                ]
+            },
+            'have': {
+                title: "HAVE / HAS / HAD (Tiempos Perfectos)",
+                desc: "Funciona como el verbo auxiliar 'Haber' en español. Conecta acciones del pasado con el presente (Have/Has) o antepasado (Had).",
+                uses: [
+                    { label: "HAVE", targets: "Presente Perfecto: I, You, We, They" },
+                    { label: "HAS", targets: "Presente Perfecto: He, She, It" },
+                    { label: "HAD", targets: "Pasado Perfecto: Todos los pronombres" }
+                ],
+                formulas: [
+                    { type: "Afirmativa", text: "[Sujeto] + <span class='text-amber-500 font-bold'>have / has / had</span> + [Verbo Participio Pasado] + [Comp.]" },
+                    { type: "Negativa", text: "[Sujeto] + <span class='text-amber-500 font-bold'>haven't / hasn't / hadn't</span> + [Verbo Participio] + [Comp.]" },
+                    { type: "Pregunta", text: "<span class='text-amber-500 font-bold'>Have / Has / Had</span> + [Sujeto] + [Verbo Participio] + [Comp.]?" }
+                ],
+                examples: [
+                    { label: "Afirmativa", en: "We <b class='text-amber-500'>have</b> <b class='text-emerald-600'>lived</b> in Spain for three years.", es: "Hemos vivido en España por tres años." },
+                    { label: "Negativa", en: "He <b class='text-amber-500'>hasn't</b> <b class='text-emerald-600'>finished</b> his homework yet.", es: "Él no ha terminado su tarea aún." },
+                    { label: "Pasado Perf.", en: "They <b class='text-amber-500'>had</b> already <b class='text-emerald-600'>left</b> when I arrived.", es: "Ellos ya se habían ido cuando yo llegué." },
+                    { label: "Pregunta", en: "<b class='text-amber-500'>Have</b> you ever <b class='text-emerald-600'>eaten</b> sushi?", es: "¿Has comido sushi alguna vez?" }
+                ]
+            },
+            'will': {
+                title: "WILL / WOULD (Futuro y Condicional)",
+                desc: "<b>Will</b> expresa futuro o decisiones espontáneas. <b>Would</b> crea el condicional en español (terminación '-aría').",
+                uses: [
+                    { label: "WILL", targets: "Futuro Simple (I will go = Iré)" },
+                    { label: "WOULD", targets: "Condicional (I would go = Iría)" }
+                ],
+                formulas: [
+                    { type: "Afirmativa", text: "[Sujeto] + <span class='text-amber-500 font-bold'>will / would</span> + [Verbo Base] + [Complemento]" },
+                    { type: "Negativa", text: "[Sujeto] + <span class='text-amber-500 font-bold'>won't / wouldn't</span> + [Verbo Base] + [Complemento]" },
+                    { type: "Pregunta", text: "<span class='text-amber-500 font-bold'>Will / Would</span> + [Sujeto] + [Verbo Base] + [Complemento]?" }
+                ],
+                examples: [
+                    { label: "Will (Afirmativo)", en: "I <b class='text-amber-500'>will</b> <b class='text-emerald-600'>call</b> you later today.", es: "Te llamaré más tarde hoy." },
+                    { label: "Won't (Negativo)", en: "It <b class='text-amber-500'>won't</b> <b class='text-emerald-600'>rain</b> tomorrow morning.", es: "No lloverá mañana por la mañana." },
+                    { label: "Would (Condicional)", en: "I <b class='text-amber-500'>would</b> <b class='text-emerald-600'>travel</b> around the world if I had money.", es: "Viajaría por todo el mundo si tuviera dinero." },
+                    { label: "Would (Pregunta)", en: "<b class='text-amber-500'>Would</b> you <b class='text-emerald-600'>like</b> some coffee?", es: "¿Te gustaría algo de café?" }
+                ]
+            },
+            'modals': {
+                title: "CAN / SHOULD / MUST / MIGHT (Verbos Modales)",
+                desc: "Modifican el sentido del verbo principal expresando habilidad, recomendación, obligación o posibilidad.",
+                uses: [
+                    { label: "CAN / COULD", targets: "Capacidad / Habilidad ('Poder' / 'Podía')" },
+                    { label: "SHOULD", targets: "Consejo o Sugerencia ('Deberías')" },
+                    { label: "MUST", targets: "Obligación Fuerte / Deber ('Debes')" },
+                    { label: "MIGHT / MAY", targets: "Posibilidad ('Puede que / Tal vez')" }
+                ],
+                formulas: [
+                    { type: "Estructura General", text: "[Sujeto] + <span class='text-amber-500 font-bold'>[Modal]</span> + [Verbo en Forma Base] + [Complemento]" }
+                ],
+                examples: [
+                    { label: "Can", en: "She <b class='text-amber-500'>can</b> <b class='text-emerald-600'>speak</b> three languages fluently.", es: "Ella puede hablar tres idiomas con fluidez." },
+                    { label: "Should", en: "You <b class='text-amber-500'>should</b> <b class='text-emerald-600'>drink</b> more water every day.", es: "Deberías beber más agua todos los días." },
+                    { label: "Must", en: "Drivers <b class='text-amber-500'>must</b> <b class='text-emerald-600'>stop</b> at the red light.", es: "Los conductores deben parar en el semáforo en rojo." },
+                    { label: "Might", en: "It <b class='text-amber-500'>might</b> <b class='text-emerald-600'>snow</b> tonight in the mountains.", es: "Puede que nieve esta noche en las montañas." }
+                ]
+            }
+        };
+
+        function selectAux(key) {
+            document.querySelectorAll('.aux-btn').forEach(btn => {
+                btn.className = "aux-btn px-4 py-2.5 rounded-xl font-bold text-sm bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all";
+            });
+            const activeBtn = document.getElementById(`tab-${key}`);
+            if(activeBtn) activeBtn.className = "aux-btn active px-4 py-2.5 rounded-xl font-bold text-sm bg-brand-600 text-white shadow-md transition-all";
+
+            const item = auxData[key];
+            const contentDiv = document.getElementById('auxContent');
+            
+            let usesHTML = item.uses.map(u => `
+                <div class="bg-amber-50/80 p-3 rounded-xl border border-amber-200/80">
+                    <span class="font-extrabold text-amber-700 text-sm block">${u.label}</span>
+                    <span class="text-xs text-slate-600">${u.targets}</span>
+                </div>
+            `).join('');
+
+            let formulasHTML = item.formulas.map(f => `
+                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 font-mono text-xs sm:text-sm text-slate-800">
+                    <span class="font-bold text-brand-600 mr-2 uppercase tracking-wide text-xs">[${f.type}]</span>
+                    ${f.text}
+                </div>
+            `).join('');
+
+            let examplesHTML = item.examples.map(ex => `
+                <div class="p-3 bg-slate-900 text-white rounded-xl text-xs sm:text-sm">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-amber-400 block mb-1">${ex.label}</span>
+                    <p class="font-medium">${ex.en}</p>
+                    <p class="text-xs text-slate-400 mt-1 font-sans">${ex.es}</p>
+                </div>
+            `).join('');
+
+            contentDiv.innerHTML = `
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-2xl font-extrabold text-slate-900 mb-2">${item.title}</h3>
+                        <p class="text-slate-600 text-sm sm:text-base">${item.desc}</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${item.uses.length > 3 ? '4' : '3'} gap-3">
+                        ${usesHTML}
+                    </div>
+
+                    <div class="space-y-2">
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Fórmulas Gramaticales:</h4>
+                        ${formulasHTML}
+                    </div>
+
+                    <div class="space-y-2">
+                        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Ejemplos Prácticos Completos:</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            ${examplesHTML}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- TENSES SECTION LOGIC ---
+        const tensesData = {
+            'present': {
+                name: "Tiempos Presentes",
+                subtenses: [
+                    {
+                        title: "Presente Simple",
+                        badge: "Rutinas / Verdades",
+                        formula: "[Sujeto] + [Verbo en Presente] + [Complemento]",
+                        tip: "Agrega 'S' al verbo si el sujeto es He/She/It.",
+                        example: "I <span class='text-emerald-600 font-bold'>study</span> English every day.",
+                        translation: "Estudio inglés todos los días."
+                    },
+                    {
+                        title: "Presente Continuo",
+                        badge: "Ocurriendo Ahora",
+                        formula: "[Sujeto] + <span class='text-amber-500 font-bold'>am/is/are</span> + [Verbo-ING] + [Complemento]",
+                        tip: "Expresa una acción en progreso directo en el momento.",
+                        example: "She <span class='text-amber-500 font-bold'>is</span> <span class='text-emerald-600 font-bold'>working</span> right now.",
+                        translation: "Ella está trabajando en este momento."
+                    },
+                    {
+                        title: "Presente Perfecto",
+                        badge: "Experiencias",
+                        formula: "[Sujeto] + <span class='text-amber-500 font-bold'>have/has</span> + [Verbo Participio] + [Complemento]",
+                        tip: "Acción que ocurrió en un tiempo no especificado o que continúa.",
+                        example: "They <span class='text-amber-500 font-bold'>have</span> <span class='text-emerald-600 font-bold'>visited</span> Spain.",
+                        translation: "Ellos han visitado España."
+                    }
+                ]
+            },
+            'past': {
+                name: "Tiempos Pasados",
+                subtenses: [
+                    {
+                        title: "Pasado Simple",
+                        badge: "Acción Terminada",
+                        formula: "[Sujeto] + [Verbo Pasado (-ed / Irregular)] + [Complemento]",
+                        tip: "Utiliza el auxiliar DID solo para preguntas y negaciones.",
+                        example: "We <span class='text-emerald-600 font-bold'>traveled</span> to London last year.",
+                        translation: "Viajamos a Londres el año pasado."
+                    },
+                    {
+                        title: "Pasado Continuo",
+                        badge: "Acción en Proceso en el Pasado",
+                        formula: "[Sujeto] + <span class='text-amber-500 font-bold'>was/were</span> + [Verbo-ING] + [Complemento]",
+                        tip: "Suele combinarse con 'when' para interrupciones de acciones.",
+                        example: "I <span class='text-amber-500 font-bold'>was</span> <span class='text-emerald-600 font-bold'>sleeping</span> when you called.",
+                        translation: "Estaba durmiendo cuando llamaste."
+                    },
+                    {
+                        title: "Pasado Perfecto",
+                        badge: "El Pasado del Pasado",
+                        formula: "[Sujeto] + <span class='text-amber-500 font-bold'>had</span> + [Verbo Participio] + [Complemento]",
+                        tip: "Ocurrió ANTES que otra acción en el pasado.",
+                        example: "She <span class='text-amber-500 font-bold'>had</span> <span class='text-emerald-600 font-bold'>left</span> before the party ended.",
+                        translation: "Ella se había ido antes de que la fiesta terminara."
+                    }
+                ]
+            },
+            'future': {
+                name: "Tiempos Futuros",
+                subtenses: [
+                    {
+                        title: "Futuro Simple (Will)",
+                        badge: "Decisiones / Predicciones",
+                        formula: "[Sujeto] + <span class='text-amber-500 font-bold'>will</span> + [Verbo Base] + [Complemento]",
+                        tip: "Decisiones espontáneas en el instante de hablar.",
+                        example: "I <span class='text-amber-500 font-bold'>will</span> <span class='text-emerald-600 font-bold'>help</span> you with that.",
+                        translation: "Te ayudaré con eso."
+                    },
+                    {
+                        title: "Futuro Intencional (Going to)",
+                        badge: "Planes Confirmados",
+                        formula: "[Sujeto] + <span class='text-amber-500 font-bold'>am/is/are going to</span> + [Verbo Base] + [Complemento]",
+                        tip: "Úsalo para planes previa y conscientemente organizados.",
+                        example: "They <span class='text-amber-500 font-bold'>are going to</span> <span class='text-emerald-600 font-bold'>buy</span> a new home.",
+                        translation: "Ellos van a comprar una casa nueva."
+                    }
+                ]
+            }
+        };
+
+        function setTenseGroup(groupKey) {
+            document.querySelectorAll('.tense-group-btn').forEach(btn => {
+                btn.className = "tense-group-btn w-full p-4 rounded-2xl border-2 border-slate-200 bg-white text-left flex items-center justify-between transition-all hover:border-slate-300";
+            });
+            const activeGroupBtn = document.getElementById(`tg-${groupKey}`);
+            if(activeGroupBtn) activeGroupBtn.className = "tense-group-btn w-full p-4 rounded-2xl border-2 border-brand-500 bg-brand-50/50 text-left flex items-center justify-between transition-all shadow-sm";
+
+            const group = tensesData[groupKey];
+            const display = document.getElementById('tenseDisplay');
+
+            let cardsHTML = group.subtenses.map(st => `
+                <div class="bg-slate-50 rounded-2xl p-5 border border-slate-200/80 space-y-3">
+                    <div class="flex justify-between items-center">
+                        <h4 class="text-lg font-bold text-slate-800">${st.title}</h4>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-white text-brand-600 border border-slate-200">${st.badge}</span>
+                    </div>
+                    <p class="font-mono text-xs text-slate-700 bg-white p-2.5 rounded-xl border border-slate-200/60">${st.formula}</p>
+                    <p class="text-xs text-slate-500"><i class="fa-solid fa-lightbulb text-amber-500 mr-1"></i> <b>Tip:</b> ${st.tip}</p>
+                    <div class="bg-slate-900 text-white p-3 rounded-xl text-sm mt-2">
+                        <p>${st.example}</p>
+                        <p class="text-xs text-slate-400 mt-1">${st.translation}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            display.innerHTML = `
+                <h3 class="text-2xl font-extrabold text-slate-900 mb-6 flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group text-brand-500"></i> ${group.name}
+                </h3>
+                <div class="space-y-4">
+                    ${cardsHTML}
+                </div>
+            `;
+        }
+
+        // --- HACKS FILTERING LOGIC ---
+        function filterHacks(category) {
+            document.querySelectorAll('.hack-cat-btn').forEach(btn => {
+                btn.className = "hack-cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700 transition-all";
+            });
+
+            const activeBtn = document.getElementById(`hack-tab-${category}`);
+            if(activeBtn) {
+                activeBtn.className = "hack-cat-btn active px-4 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20 transition-all";
+            }
+
+            const cards = document.querySelectorAll('.hack-card');
+            cards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'flex';
+                } else {
+                    if (card.classList.contains(category)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // --- MULTI-MODULE QUIZ ENGINE ---
+        const quizDatabase = {
+            'pronouns': [
+                {
+                    question: "Completa la oración: 'David is calling ______, but I can't answer the phone right now.'",
+                    options: ["me", "I", "my", "myself"],
+                    correct: 0,
+                    explanation: "Se requiere un Object Pronoun ('me') porque recibe la acción del verbo 'calling' y va después de este."
+                },
+                {
+                    question: "¿Cuál frase expresa posesión de forma correcta utilizando un Pronombre Posesivo?",
+                    options: [
+                        "This book is my.",
+                        "This book is mine.",
+                        "This book is me.",
+                        "This book is myself."
+                    ],
+                    correct: 1,
+                    explanation: "'Mine' es el Pronombre Posesivo que reemplaza la estructura 'my book' al final de la oración sin necesitar un sustantivo después."
+                },
+                {
+                    question: "Selecciona la opción con el pronombre reflexivo adecuado: 'She prepared the presentation by ______.'",
+                    options: ["herself", "her", "she", "hers"],
+                    correct: 0,
+                    explanation: "'Herself' es el Pronombre Reflexivo correspondiente a 'She'. La expresión 'by herself' significa que lo hizo sola."
+                },
+                {
+                    question: "¿Qué pronombre sujeto reemplaza correctamente a: 'My sister and her husband'?",
+                    options: ["We", "They", "Them", "You"],
+                    correct: 1,
+                    explanation: "'My sister and her husband' se refiere a 'Ellos' (They) en función de Sujeto de la oración."
+                }
+            ],
+            'auxiliaries': [
+                {
+                    question: "Completa la negación en presente: 'He ______ like seafood at all.'",
+                    options: ["don't", "doesn't", "didn't", "isn't"],
+                    correct: 1,
+                    explanation: "Para la 3ª persona del singular (He/She/It) en Presente Simple se utiliza el auxiliar negativo 'doesn't'."
+                },
+                {
+                    question: "Elige la pregunta formulada correctamente en pasado:",
+                    options: [
+                        "Did you went to the cinema yesterday?",
+                        "Did you go to the cinema yesterday?",
+                        "Do you went to the cinema yesterday?",
+                        "Were you go to the cinema yesterday?"
+                    ],
+                    correct: 1,
+                    explanation: "Cuando usamos el auxiliar 'Did' en pasado, el verbo principal debe permanecer en su forma base ('go'), NUNCA en pasado."
+                },
+                {
+                    question: "Selecciona el auxiliar adecuado para aconsejar a alguien: 'You ______ see a doctor soon.'",
+                    options: ["should", "did", "does", "had"],
+                    correct: 0,
+                    explanation: "'Should' es el verbo modal auxiliar utilizado para brindar sugerencias y consejos ('deberías')."
+                },
+                {
+                    question: "¿Qué auxiliar completa el Presente Perfecto? 'They ______ lived here for 10 years.'",
+                    options: ["have", "has", "are", "did"],
+                    correct: 0,
+                    explanation: "Para el sujeto plural 'They' en Presente Perfecto se utiliza el auxiliar 'have'."
+                }
+            ],
+            'tenses': [
+                {
+                    question: "¿Qué tiempo verbal describe una acción que estaba ocurriendo y fue interrumpida por otra en pasado?",
+                    options: ["Presente Perfecto", "Pasado Continuo", "Futuro Simple", "Presente Simple"],
+                    correct: 1,
+                    explanation: "El Pasado Continuo (ex: I was sleeping) describe una acción en desarrollo en el pasado que fue interrumpida por el Pasado Simple (when you called)."
+                },
+                {
+                    question: "Identifica la oración en Futuro Intencional (Going to):",
+                    options: [
+                        "I will travel next year.",
+                        "I am going to travel next week.",
+                        "I travel next week.",
+                        "I would travel if I could."
+                    ],
+                    correct: 1,
+                    explanation: "'am/is/are + going to + verbo base' estructura el futuro planificado o intencional."
+                },
+                {
+                    question: "Completa la frase en Presente Continuo: 'Look! The kids ______ in the garden.'",
+                    options: ["play", "are playing", "played", "have played"],
+                    correct: 1,
+                    explanation: "La palabra 'Look!' indica que la acción ocurre en el instante, requiriendo Presente Continuo ('are playing')."
+                },
+                {
+                    question: "¿Cuál es la estructura del Pasado Perfecto?",
+                    options: [
+                        "[Sujeto] + has + [Participio]",
+                        "[Sujeto] + had + [Participio]",
+                        "[Sujeto] + did + [Verbo base]",
+                        "[Sujeto] + was/were + [ING]"
+                    ],
+                    correct: 1,
+                    explanation: "El Pasado Perfecto utiliza siempre el auxiliar 'HAD' seguido del verbo en Participio Pasado."
+                }
+            ],
+            'hacks': [
+                {
+                    question: "Siguiendo la regla de Phrasal Verbs separables, si usamos el pronombre 'it', ¿cuál opción es la ÚNICA correcta?",
+                    options: [
+                        "Turn off it.",
+                        "Turn it off.",
+                        "It turn off.",
+                        "Off turn it."
+                    ],
+                    correct: 1,
+                    explanation: "Si el objeto de un phrasal verb separable es un pronombre (it/them), este OBLIGATORIAMENTE debe colocarse en medio del verbo y la partícula."
+                },
+                {
+                    question: "En Reported Speech (El paso atrás), si en la frase original se usó Presente Simple, ¿a qué tiempo cambia?",
+                    options: ["Pasado Simple", "Presente Perfecto", "Futuro Will", "Pasado Continuo"],
+                    correct: 0,
+                    explanation: "Al dar 'un paso atrás' en el tiempo, el Presente Simple se transforma en Pasado Simple, etc."
+                },
+                {
+                    question: "¿Cómo se diferencia 'I stopped smoking' de 'I stopped to smoke'?",
+                    options: [
+                        "Son idénticas y significan lo mismo.",
+                        "-ING indica dejar el hábito por completo; TO indica hacer una pausa para fumar.",
+                        "TO indica dejar el hábito por completo; -ING indica una pausa.",
+                        "Ambas son gramaticalmente incorrectas."
+                    ],
+                    correct: 1,
+                    explanation: "Verbos como Stop seguidos de -ING implican abandonar la actividad; seguidos de TO + Infinitivo indican pausar para iniciar la acción."
+                },
+                {
+                    question: "¿Qué técnica rápida te ayuda a saber si una oración está en Voz Pasiva?",
+                    options: [
+                        "Agregar 'yesterday' al inicio",
+                        "Agregar '...by zombies' al final de la oración",
+                        "Cambiar el sujeto por 'I'",
+                        "Agregar la palabra 'always'"
+                    ],
+                    correct: 1,
+                    explanation: "El test de 'by zombies' funciona porque la voz pasiva permite añadir el agente de la acción al final (The car was repaired... by zombies)."
+                }
+            ]
+        };
+
+        let currentCategory = 'pronouns';
+        let currentQIndex = 0;
+        let score = 0;
+        let answered = false;
+
+        function changeQuizCategory(catKey) {
+            currentCategory = catKey;
+            currentQIndex = 0;
+            score = 0;
+
+            // Update Tab Styling
+            document.querySelectorAll('.qcat-btn').forEach(btn => {
+                btn.className = "qcat-btn px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all";
+            });
+            const activeBtn = document.getElementById(`qcat-${catKey}`);
+            if(activeBtn) activeBtn.className = "qcat-btn active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-brand-600 text-white shadow-md transition-all";
+
+            document.getElementById('nextBtn').classList.remove('hidden');
+            loadQuestion();
+        }
+
+        function startModuleQuiz(catKey) {
+            changeQuizCategory(catKey);
+            const practiceSec = document.getElementById('practice');
+            practiceSec.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function loadQuestion() {
+            answered = false;
+            const qList = quizDatabase[currentCategory];
+            const q = qList[currentQIndex];
+
+            // Update Header & Progress Bar
+            document.getElementById('quizQuestionNum').innerText = `Pregunta ${currentQIndex + 1} de ${qList.length}`;
+            document.getElementById('quizScoreText').innerText = `Puntuación: ${score} pts`;
+            document.getElementById('quizProgressBar').style.width = `${((currentQIndex + 1) / qList.length) * 100}%`;
+
+            const nextBtn = document.getElementById('nextBtn');
+            nextBtn.disabled = true;
+            nextBtn.className = "px-6 py-3 rounded-xl font-bold text-sm bg-slate-200 text-slate-400 cursor-not-allowed transition-all";
+
+            const body = document.getElementById('quizBody');
+            
+            let optionsHTML = q.options.map((opt, idx) => `
+                <button onclick="checkAnswer(${idx})" id="opt-${idx}" class="q-opt w-full text-left p-4 rounded-xl border-2 border-slate-200 font-medium text-slate-700 hover:border-brand-500 hover:bg-brand-50/50 transition-all flex items-center justify-between">
+                    <span>${opt}</span>
+                    <i class="fa-regular fa-circle text-slate-300 opt-icon"></i>
+                </button>
+            `).join('');
+
+            body.innerHTML = `
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-6">${q.question}</h3>
+                <div class="space-y-3">
+                    ${optionsHTML}
+                </div>
+                <div id="explanationBox" class="mt-6 hidden p-4 rounded-2xl text-sm"></div>
+            `;
+        }
+
+        function checkAnswer(selectedIdx) {
+            if (answered) return;
+            answered = true;
+
+            const qList = quizDatabase[currentCategory];
+            const q = qList[currentQIndex];
+            const isCorrect = selectedIdx === q.correct;
+            const expBox = document.getElementById('explanationBox');
+
+            if (isCorrect) {
+                score += 25;
+                document.getElementById('quizScoreText').innerText = `Puntuación: ${score} pts`;
+            }
+
+            q.options.forEach((_, idx) => {
+                const btn = document.getElementById(`opt-${idx}`);
+                btn.disabled = true;
+                btn.classList.remove('hover:border-brand-500', 'hover:bg-brand-50/50');
+
+                if (idx === q.correct) {
+                    btn.className = "w-full text-left p-4 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-900 font-bold flex items-center justify-between";
+                    btn.querySelector('.opt-icon').className = "fa-solid fa-circle-check text-emerald-600 text-lg";
+                } else if (idx === selectedIdx && !isCorrect) {
+                    btn.className = "w-full text-left p-4 rounded-xl border-2 border-rose-500 bg-rose-50 text-rose-900 font-medium flex items-center justify-between";
+                    btn.querySelector('.opt-icon').className = "fa-solid fa-circle-xmark text-rose-600 text-lg";
+                }
+            });
+
+            expBox.classList.remove('hidden');
+            if (isCorrect) {
+                expBox.className = "mt-6 p-4 rounded-2xl text-sm bg-emerald-50 border border-emerald-200 text-emerald-900";
+                expBox.innerHTML = `<p class="font-bold flex items-center gap-2 mb-1"><i class="fa-solid fa-circle-check text-emerald-600"></i> ¡Correcto!</p><p>${q.explanation}</p>`;
+            } else {
+                expBox.className = "mt-6 p-4 rounded-2xl text-sm bg-rose-50 border border-rose-200 text-rose-900";
+                expBox.innerHTML = `<p class="font-bold flex items-center gap-2 mb-1"><i class="fa-solid fa-circle-xmark text-rose-600"></i> Respuesta Incorrecta</p><p>${q.explanation}</p>`;
+            }
+
+            const nextBtn = document.getElementById('nextBtn');
+            nextBtn.disabled = false;
+            nextBtn.className = "px-6 py-3 rounded-xl font-bold text-sm bg-brand-600 text-white shadow-lg hover:bg-brand-700 cursor-pointer transition-all";
+        }
+
+        function nextQuestion() {
+            const qList = quizDatabase[currentCategory];
+            if (currentQIndex < qList.length - 1) {
+                currentQIndex++;
+                loadQuestion();
+            } else {
+                showQuizResults();
+            }
+        }
+
+        function showQuizResults() {
+            const body = document.getElementById('quizBody');
+            document.getElementById('nextBtn').classList.add('hidden');
+
+            let feedbackMsg = "¡Sigue practicando este módulo para reforzar!";
+            if (score >= 100) feedbackMsg = "¡Puntuación perfecta! Dominas este módulo completamente.";
+            else if (score >= 75) feedbackMsg = "¡Excelente trabajo! Tienes muy claras las bases de este módulo.";
+
+            body.innerHTML = `
+                <div class="text-center py-6 space-y-4">
+                    <div class="w-20 h-20 rounded-full bg-brand-100 text-brand-600 mx-auto flex items-center justify-center text-3xl font-extrabold">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-slate-900">¡Módulo Completado!</h3>
+                    <p class="text-slate-600 text-sm max-w-sm mx-auto">${feedbackMsg}</p>
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 inline-block px-8">
+                        <span class="text-xs uppercase font-bold text-slate-400 block">Tu Puntaje Final</span>
+                        <span class="text-4xl font-black gradient-text">${score} / 100</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function restartCurrentQuiz() {
+            changeQuizCategory(currentCategory);
+        }
+
+        // Initial Load Triggers
+        window.onload = function() {
+            selectAux('do');
+            setTenseGroup('present');
+            changeQuizCategory('pronouns');
+        }
+    </script>
+</body>
+</html>
